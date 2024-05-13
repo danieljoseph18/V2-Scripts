@@ -6,27 +6,17 @@ const MockUpdatePnl_1 = require("../prices/MockUpdatePnl");
 const MockUpdatePrices_1 = require("../prices/MockUpdatePrices");
 const Router_1 = require("../abis/Router");
 const Market_1 = require("../abis/Market");
-const USDC_1 = require("../abis/USDC");
 const PositionManager_1 = require("../abis/PositionManager");
 const client_1 = require("../client");
 const waitForExecution_1 = require("../utils/waitForExecution");
+const approveContract_1 = require("../utils/approveContract");
 // $300
 const usdcIn = 5000000000n;
 const executionFee = (0, viem_1.parseEther)("0.001");
 const addLiquidity = async () => {
     // Create a deposit request on the router
     let nonce = await client_1.publicClient.getTransactionCount(client_1.account);
-    // Approve Router to spend USDC
-    const { request: approval } = await client_1.publicClient.simulateContract({
-        account: client_1.account,
-        address: constants_1.USDC,
-        abi: USDC_1.UsdcABI,
-        functionName: "approve",
-        args: [constants_1.ROUTER, usdcIn],
-        nonce: nonce,
-    });
-    await client_1.walletClient.writeContract(approval);
-    console.log("USDC Approved for Router");
+    await (0, approveContract_1.approveContract)(constants_1.USDC, constants_1.ROUTER, usdcIn, nonce);
     nonce++;
     await (0, waitForExecution_1.waitForExecution)();
     const { request } = await client_1.publicClient.simulateContract({

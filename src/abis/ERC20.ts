@@ -1,33 +1,15 @@
-export const UsdcABI = [
-  {
-    type: "constructor",
-    inputs: [],
-    stateMutability: "nonpayable",
-  },
-  {
-    type: "function",
-    name: "DOMAIN_SEPARATOR",
-    inputs: [],
-    outputs: [
-      {
-        name: "",
-        type: "bytes32",
-        internalType: "bytes32",
-      },
-    ],
-    stateMutability: "view",
-  },
+export const ERC20ABI = [
   {
     type: "function",
     name: "allowance",
     inputs: [
       {
-        name: "",
+        name: "owner",
         type: "address",
         internalType: "address",
       },
       {
-        name: "",
+        name: "spender",
         type: "address",
         internalType: "address",
       },
@@ -51,7 +33,7 @@ export const UsdcABI = [
         internalType: "address",
       },
       {
-        name: "amount",
+        name: "value",
         type: "uint256",
         internalType: "uint256",
       },
@@ -70,7 +52,7 @@ export const UsdcABI = [
     name: "balanceOf",
     inputs: [
       {
-        name: "",
+        name: "account",
         type: "address",
         internalType: "address",
       },
@@ -99,24 +81,6 @@ export const UsdcABI = [
   },
   {
     type: "function",
-    name: "mint",
-    inputs: [
-      {
-        name: "account",
-        type: "address",
-        internalType: "address",
-      },
-      {
-        name: "amount",
-        type: "uint256",
-        internalType: "uint256",
-      },
-    ],
-    outputs: [],
-    stateMutability: "nonpayable",
-  },
-  {
-    type: "function",
     name: "name",
     inputs: [],
     outputs: [
@@ -127,68 +91,6 @@ export const UsdcABI = [
       },
     ],
     stateMutability: "view",
-  },
-  {
-    type: "function",
-    name: "nonces",
-    inputs: [
-      {
-        name: "",
-        type: "address",
-        internalType: "address",
-      },
-    ],
-    outputs: [
-      {
-        name: "",
-        type: "uint256",
-        internalType: "uint256",
-      },
-    ],
-    stateMutability: "view",
-  },
-  {
-    type: "function",
-    name: "permit",
-    inputs: [
-      {
-        name: "owner",
-        type: "address",
-        internalType: "address",
-      },
-      {
-        name: "spender",
-        type: "address",
-        internalType: "address",
-      },
-      {
-        name: "value",
-        type: "uint256",
-        internalType: "uint256",
-      },
-      {
-        name: "deadline",
-        type: "uint256",
-        internalType: "uint256",
-      },
-      {
-        name: "v",
-        type: "uint8",
-        internalType: "uint8",
-      },
-      {
-        name: "r",
-        type: "bytes32",
-        internalType: "bytes32",
-      },
-      {
-        name: "s",
-        type: "bytes32",
-        internalType: "bytes32",
-      },
-    ],
-    outputs: [],
-    stateMutability: "nonpayable",
   },
   {
     type: "function",
@@ -226,7 +128,7 @@ export const UsdcABI = [
         internalType: "address",
       },
       {
-        name: "amount",
+        name: "value",
         type: "uint256",
         internalType: "uint256",
       },
@@ -255,7 +157,7 @@ export const UsdcABI = [
         internalType: "address",
       },
       {
-        name: "amount",
+        name: "value",
         type: "uint256",
         internalType: "uint256",
       },
@@ -318,5 +220,91 @@ export const UsdcABI = [
       },
     ],
     anonymous: false,
+  },
+  {
+    type: "error",
+    name: "ERC20InsufficientAllowance",
+    inputs: [
+      {
+        name: "spender",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "allowance",
+        type: "uint256",
+        internalType: "uint256",
+      },
+      {
+        name: "needed",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
+  },
+  {
+    type: "error",
+    name: "ERC20InsufficientBalance",
+    inputs: [
+      {
+        name: "sender",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "balance",
+        type: "uint256",
+        internalType: "uint256",
+      },
+      {
+        name: "needed",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
+  },
+  {
+    type: "error",
+    name: "ERC20InvalidApprover",
+    inputs: [
+      {
+        name: "approver",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+  },
+  {
+    type: "error",
+    name: "ERC20InvalidReceiver",
+    inputs: [
+      {
+        name: "receiver",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+  },
+  {
+    type: "error",
+    name: "ERC20InvalidSender",
+    inputs: [
+      {
+        name: "sender",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+  },
+  {
+    type: "error",
+    name: "ERC20InvalidSpender",
+    inputs: [
+      {
+        name: "spender",
+        type: "address",
+        internalType: "address",
+      },
+    ],
   },
 ] as const;

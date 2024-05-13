@@ -10,10 +10,11 @@ import { mockUpdatePnl } from "../prices/MockUpdatePnl";
 import { mockUpdatePrices } from "../prices/MockUpdatePrices";
 import { RouterABI } from "../abis/Router";
 import { MarketABI } from "../abis/Market";
-import { UsdcABI } from "../abis/USDC";
+import { ERC20ABI } from "../abis/ERC20";
 import { PositionManagerABI } from "../abis/PositionManager";
 import { walletClient, publicClient, account } from "../client";
 import { waitForExecution } from "../utils/waitForExecution";
+import { approveContract } from "../utils/approveContract";
 
 // $300
 const usdcIn = 5000000000n;
@@ -23,19 +24,7 @@ const addLiquidity = async () => {
   // Create a deposit request on the router
   let nonce = await publicClient.getTransactionCount(account);
 
-  // Approve Router to spend USDC
-  const { request: approval } = await publicClient.simulateContract({
-    account,
-    address: USDC,
-    abi: UsdcABI,
-    functionName: "approve",
-    args: [ROUTER, usdcIn],
-    nonce: nonce,
-  });
-
-  await walletClient.writeContract(approval);
-
-  console.log("USDC Approved for Router");
+  await approveContract(USDC, ROUTER, usdcIn, nonce);
 
   nonce++;
 

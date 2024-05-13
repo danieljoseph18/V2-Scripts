@@ -1,7 +1,7 @@
 import { MockPriceFeedABI } from "../abis/MockPriceFeed";
 import { walletClient, publicClient, account } from "../client";
 import { getMed, MOCK_PRICE_FEED } from "../constants";
-import { waitForConfirmation } from "../utils/waitForConfirmation";
+import { waitForExecution } from "../utils/waitForExecution";
 
 export const mockUpdatePrices = async (
   tokens: string[],
@@ -25,7 +25,7 @@ export const mockUpdatePrices = async (
     functionName: "encodePrices",
     args: [tokens, precisions, variances, timestamps, meds],
   });
-  waitForConfirmation();
+  await waitForExecution();
   // update the prices with the encoded repsonse
   const { request } = await publicClient.simulateContract({
     account,

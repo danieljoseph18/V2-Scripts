@@ -13,6 +13,9 @@ export const ROUTER: `0x${string}` =
 export const POSITION_MANAGER: `0x${string}` =
   "0x81a1B98461e77B6eA33cE3b52641B6750d7EabF1";
 
+export const TRADE_STORAGE: `0x${string}` =
+  "0xfCDf7C96C940Cfaede9f4088cfdf73C71411628A";
+
 export const getMed: { [key: string]: bigint } = {
   ETH: 3000n,
   USDC: 1n,

@@ -1,11 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.USDC = exports.WETH = exports.MARKET_1_ID = exports.getMed = exports.POSITION_MANAGER = exports.ROUTER = exports.MARKET = exports.MOCK_PRICE_FEED = exports.MARKET_FACTORY = void 0;
+exports.USDC = exports.WETH = exports.MARKET_1_ID = exports.getMed = exports.TRADE_STORAGE = exports.POSITION_MANAGER = exports.ROUTER = exports.MARKET = exports.MOCK_PRICE_FEED = exports.MARKET_FACTORY = void 0;
 exports.MARKET_FACTORY = "0xDe8304b5399A6f37168Fa1F01D43A2f7f3c43100";
 exports.MOCK_PRICE_FEED = "0x16F39051d2315Da24AC9c10B5193b45796010eB6";
 exports.MARKET = "0x0eD6a72413462bd066563F9F9019321290bd1517";
 exports.ROUTER = "0x7287ccf9F877c6606A2BA399c862FC3A10CF78f0";
 exports.POSITION_MANAGER = "0x81a1B98461e77B6eA33cE3b52641B6750d7EabF1";
+exports.TRADE_STORAGE = "0xfCDf7C96C940Cfaede9f4088cfdf73C71411628A";
 exports.getMed = {
     ETH: 3000n,
     USDC: 1n,
